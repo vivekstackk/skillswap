@@ -2,65 +2,56 @@
 
 A modern peer-to-peer platform for discovering, sharing, and learning skills.
 
-## Project Overview
+## Overview
 
 SkillSwap is a peer-to-peer skill sharing platform that enables users to discover new skills, learn from others' expertise, and share their own knowledge. The platform operates on a time-credit system where users earn credits by publishing skills and spend those credits to learn from others, creating a collaborative learning community.
 
-**Problem it solves:** Traditional learning platforms often lack personal connection and practical, real-world skills taught by actual practitioners. SkillSwap bridges this gap by connecting people directly to share knowledge in a community-driven environment.
-
-**How users can use it:**
-- Browse skills across various categories (tech, arts, cooking, fitness, etc.)
-- Learn practical skills through video lectures and tutorials
-- Share your expertise by creating and publishing your own skill lessons
-- Earn time credits for publishing skills that can be used to unlock other skills
-- Connect with other learners and skill creators through messaging
-
-**Why it is useful:** SkillSwap democratizes education by allowing anyone to both teach and learn, creating a sustainable ecosystem where knowledge is freely exchanged within the community.
+Built with React, Vite, Tailwind CSS, and Firebase, SkillSwap provides a seamless experience for knowledge exchange in a community-driven environment.
 
 ## Key Features
 
-- **Skill Discovery:** Browse and search through a growing library of user-created skills
-- **Interactive Learning:** Video-based lectures with structured curriculum
-- **Credit System:** Earn time credits for publishing skills, spend credits to learn
-- **Skill Creation:** Easy tools to create and publish your own skill lessons
-- **User Profiles:** Track your learning journey and published skills
-- **Messaging:** Connect directly with skill creators and learners
-- **Responsive Design:** Works seamlessly on desktop and mobile devices
-- **Authentication:** Secure user authentication with Firebase
+- **Skill Discovery**: Browse and search through a library of user-created skills across various domains
+- **Interactive Learning**: Video-based lectures with structured curriculum and hands-on practice
+- **Credit System**: Earn time credits for publishing skills, spend credits to unlock and learn from others
+- **Skill Creation**: Create and publish your own skill lessons with multi-lecture support
+- **User Profiles**: Track your learning journey, published skills, and credit balance
+- **Messaging System**: Connect directly with skill creators and learners for questions and collaboration
+- **Responsive Design**: Optimized for both desktop and mobile devices
+- **Secure Authentication**: Firebase-based authentication with Google provider
 
-## Tech Stack
+## Technology Stack
 
 ### Frontend
-- **React 19** - JavaScript library for building user interfaces
+- **React 19** - Modern JavaScript library for building user interfaces
 - **Vite** - Fast build tool and development server
 - **Tailwind CSS** - Utility-first CSS framework for rapid UI development
 - **React Router DOM** - Declarative routing for React applications
-- **Lucide React** - Beautiful, consistent icon set
+- **Lucide React** - Consistent, accessible icon set
+- **Material-UI (MUI)** - Comprehensive React component library
 
 ### Backend & Services
 - **Firebase Authentication** - Secure user authentication and management
 - **Cloud Firestore** - Real-time NoSQL database for skill and user data
-- **Firebase Admin** - Server-side Firebase SDK for administrative functions
-
-### UI Components
-- **Material-UI (MUI) v7** - React component library for building accessible UIs
+- **Firebase Storage** - Storage for skill lecture videos and media
+- **Firebase Admin** - Server-side SDK for administrative functions (where applicable)
 
 ### Development Tools
 - **ESLint** - JavaScript linting utility for code quality
 - **PostCSS & Autoprefixer** - CSS processing for cross-browser compatibility
+- **Vite Plugin React** - Official React plugin for Vite
 
 ## How It Works
 
-1. **Explore Skills:** Browse the skill library or search for specific skills you want to learn
-2. **Learn a Skill:** Select a skill, check if you have enough time credits, and unlock the lessons
-3. **Learn & Practice:** Watch video lectures, follow tutorials, and practice the skill
-4. **Share Knowledge:** Create your own skill lessons using the skill creation tool
-5. **Publish & Earn:** Publish your skill to earn time credits that others can use to learn from you
-6. **Connect:** Use the messaging system to ask questions, share feedback, and connect with other learners
+1. **Explore Skills**: Browse the skill library or search for specific skills you want to learn
+2. **Learn a Skill**: Select a skill, verify you have enough time credits, and unlock the lessons
+3. **Learn & Practice**: Watch video lectures, follow tutorials, and practice the skill
+4. **Share Knowledge**: Create your own skill lessons using the skill creation tool
+5. **Publish & Earn**: Publish your skill to earn time credits that others can use to learn from you
+6. **Connect**: Use the messaging system to ask questions, share feedback, and connect with other learners
 
-## Demo
+## Live Demo
 
-You can try the live demo at: https://skillswaapp.vercel.app
+Experience SkillSwap live at: [https://skillswaapp.vercel.app](https://skillswaapp.vercel.app)
 
 ## Installation
 
@@ -111,9 +102,9 @@ The following environment variables are required for Firebase integration:
 | `VITE_PROJECT_ID` | Firebase project ID | `skillswap` |
 | `VITE_STORAGE_BUCKET` | Firebase storage bucket | `skillswap.appspot.com` |
 | `VITE_MESSAGING_SENDER_ID` | Firebase messaging sender ID | `1234567890` |
-| `VITE_APP_ID` | Firebase app ID | `1:1234567890:web:abcdef123456` |
+| `VITE_APP_ID` | Firebase app ID | `1:1234567890:web:abcdef123456>` |
 
-> **Important:** Never commit your actual `.env` file to version control. The `.gitignore` file is configured to exclude `.env` files for security.
+> **Important**: Never commit your actual `.env` file to version control. The `.gitignore` file is configured to exclude `.env` files for security.
 
 ## Project Structure
 
@@ -143,15 +134,15 @@ skillswap/
 
 These are planned enhancements for future versions of SkillSwap:
 
-- **Skill Categories:** Improved categorization and tagging system for better discovery
-- **Progress Tracking:** Visual progress bars and completion tracking for skills
-- **Skill Ratings & Reviews:** Allow users to rate and review skills they've learned
-- **Live Sessions:** Option to schedule and host live skill-sharing sessions
-- **Mobile App:** Native mobile applications for iOS and Android
-- **Offline Access:** Download skills for offline learning
-- **Gamification:** Badges, achievements, and leaderboards to encourage participation
-- **Advanced Search:** Filters by difficulty level, duration, and skill type
-- **Multi-language Support:** Internationalization for global accessibility
+- **Skill Categories**: Improved categorization and tagging system for better discovery
+- **Progress Tracking**: Visual progress bars and completion tracking for skills
+- **Skill Ratings & Reviews**: Allow users to rate and review skills they've learned
+- **Live Sessions**: Option to schedule and host live skill-sharing sessions
+- **Mobile App**: Native mobile applications for iOS and Android
+- **Offline Access**: Download skills for offline learning
+- **Gamification**: Badges, achievements, and leaderboards to encourage participation
+- **Advanced Search**: Filters by difficulty level, duration, and skill type
+- **Multi-language Support**: Internationalization for global accessibility
 
 ## Contributing
 
@@ -167,7 +158,7 @@ Please ensure your code follows the existing ESLint conventions and includes app
 
 ## License
 
-This project is currently licensed under the ISC license. See the [LICENSE](LICENSE) file for details.
+This project is licensed under the ISC license.
 
 ## Author
 
