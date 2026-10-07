@@ -1,0 +1,337 @@
+/* =========================================================================
+   SkillSwap – G&G Split-Reveal Scroll Animation
+   Left half slides UP, right half slides DOWN → reveals next panel
+   ========================================================================= */
+
+.gg-home {
+  background: #000;
+  color: #f5f2e9;
+}
+
+/* ── Nav ─────────────────────────────────────────────────────────────── */
+.gg-nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 200;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 18px 24px;
+  background: linear-gradient(to bottom, rgba(0,0,0,0.65) 0%, rgba(0,0,0,0) 100%);
+}
+.gg-nav-brand {
+  text-decoration: none;
+  color: #fff;
+  font-size: 14px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: -0.02em;
+}
+.gg-nav-centre {
+  display: flex;
+  gap: 26px;
+}
+.gg-nav-centre a {
+  color: #fff;
+  text-decoration: none;
+  font-size: 12px;
+  font-weight: 800;
+  text-transform: uppercase;
+  opacity: 0.85;
+  transition: opacity 0.3s;
+}
+.gg-nav-centre a:hover { opacity: 1; }
+
+/* ─────────────────────────────────────────────────────────────────────
+   SPLIT-REVEAL SCROLL
+   
+   All panels stacked with position:absolute. First panel on top (highest z-index).
+   On scroll, the top panel's LEFT half translateY(-100%) and RIGHT half
+   translateY(+100%), splitting apart like a curtain to reveal the next
+   panel underneath. Text fades out during the split.
+   ───────────────────────────────────────────────────────────────────── */
+
+.gg-scroll-wrap {
+  position: relative;
+  height: 600vh; /* 5 transitions × ~100vh each + 100vh viewport */
+}
+
+.gg-panels-viewport {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  z-index: 1;
+  overflow: hidden;
+}
+
+/* ── Panel ────────────────────────────────────────────────────────────── */
+.gg-panel {
+  position: absolute;
+  inset: 0;
+}
+
+/* Split grid: two halves side by side */
+.gg-panel-split {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  position: absolute;
+  inset: 0;
+}
+
+/* Each half is a full-height column that can slide up or down */
+.gg-split-left,
+.gg-split-right {
+  position: relative;
+  overflow: hidden;
+  will-change: transform;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  transform: translate3d(0, 0, 0);
+}
+
+/* Images fill their half */
+.gg-split-left img,
+.gg-split-right img {
+  width: 100%;
+  height: 100vh;
+  object-fit: cover;
+  display: block;
+  filter: saturate(0.85) contrast(1.08);
+}
+
+.gg-img-darken {
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.35);
+  pointer-events: none;
+}
+
+/* Content centered over both halves */
+.gg-panel-content {
+  position: absolute;
+  z-index: 5;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 40px;
+  will-change: transform, opacity;
+  gap: 14px;
+  pointer-events: none;
+}
+.gg-panel-content > * { pointer-events: auto; }
+
+.gg-panel-cats {
+  display: flex;
+  gap: 12px;
+}
+.gg-panel-cats span {
+  color: var(--accent, #f5f2e9);
+  font-size: 13px;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.gg-panel-title {
+  font-size: clamp(56px, 11vw, 160px);
+  line-height: 0.85;
+  letter-spacing: -0.06em;
+  font-weight: 900;
+  text-transform: uppercase;
+  color: var(--accent, #9be878);
+  margin: 0;
+  white-space: pre-line;
+  max-width: 14ch;
+}
+
+.gg-panel-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--accent, #f5f2e9);
+  font-size: 13px;
+  font-weight: 800;
+  text-transform: uppercase;
+  text-decoration: none;
+  opacity: 0.9;
+  transition: opacity 0.3s, gap 0.3s;
+}
+.gg-panel-cta:hover { opacity: 1; gap: 14px; }
+
+.gg-panel-link {
+  position: absolute;
+  inset: 0;
+  z-index: 4;
+  cursor: pointer;
+}
+
+/* ── Footer brand (fixed bottom) ─────────────────────────────────── */
+.gg-footer-brand {
+  position: fixed;
+  bottom: 0; left: 0; right: 0;
+  z-index: 150;
+  display: flex;
+  justify-content: space-between;
+  padding: 14px 24px;
+  font-size: 11px;
+  font-weight: 900;
+  text-transform: uppercase;
+  color: rgba(245,242,233,.45);
+  pointer-events: none;
+  mix-blend-mode: difference;
+}
+
+/* ── Marquee ─────────────────────────────────────────────────────────── */
+.gg-marquee {
+  position: relative;
+  z-index: 10;
+  border-top: 1px solid rgba(245,242,233,.16);
+  border-bottom: 1px solid rgba(245,242,233,.16);
+  overflow: hidden;
+  white-space: nowrap;
+  padding: 16px 0;
+  background: #000;
+}
+.gg-marquee-track {
+  display: inline-block;
+  animation: ggMarquee 30s linear infinite;
+  color: #9be878;
+  font-size: 12px;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+.gg-marquee-track span { margin-right: 52px; }
+@keyframes ggMarquee { to { transform: translateX(-50%); } }
+
+/* ── How It Works ────────────────────────────────────────────────────── */
+.gg-how-section {
+  padding: 100px 40px 80px;
+  background: #050505;
+  position: relative;
+  z-index: 10;
+}
+.gg-how-head { margin-bottom: 50px; }
+.gg-how-eyebrow {
+  color: #9be878;
+  font-size: 11px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  margin-bottom: 10px;
+}
+.gg-how-title {
+  font-size: clamp(44px, 7vw, 100px);
+  line-height: 0.85;
+  letter-spacing: -0.075em;
+  font-weight: 900;
+  text-transform: uppercase;
+  color: #f5f2e9;
+  margin: 0;
+}
+.gg-how-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 40px;
+  border-top: 1px solid rgba(245,242,233,.15);
+  padding-top: 40px;
+}
+.gg-how-card h3 {
+  font-size: 22px;
+  font-weight: 900;
+  text-transform: uppercase;
+  margin: 10px 0;
+  letter-spacing: -0.04em;
+}
+.gg-how-card p {
+  color: rgba(245,242,233,.55);
+  font-size: 13px;
+  line-height: 1.6;
+}
+.gg-how-num {
+  color: #9be878;
+  font-family: 'DM Mono', monospace;
+  font-size: 11px;
+}
+
+/* ── CTA ─────────────────────────────────────────────────────────────── */
+.gg-cta-section {
+  padding: 0 40px 100px;
+  background: #050505;
+  position: relative;
+  z-index: 10;
+}
+.gg-cta-inner {
+  border: 1px solid rgba(245,242,233,.15);
+  background: #0a0a0a;
+  padding: 50px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 30px;
+  overflow: hidden;
+  position: relative;
+}
+.gg-cta-inner::before {
+  content: '';
+  position: absolute;
+  width: 260px; height: 260px;
+  border-radius: 50%;
+  background: #9be878;
+  right: -80px; bottom: -140px;
+  opacity: 0.14;
+}
+.gg-cta-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  background: #9be878;
+  color: #050505;
+  border: 1px solid #9be878;
+  padding: 14px 22px;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-size: 12px;
+  font-weight: 800;
+  transition: background 0.25s;
+  flex-shrink: 0;
+}
+.gg-cta-btn:hover { background: #b7f59c; }
+
+/* ── Footer ──────────────────────────────────────────────────────────── */
+.gg-footer {
+  display: flex;
+  justify-content: space-between;
+  padding: 18px 28px;
+  font-size: 10px;
+  font-weight: 900;
+  text-transform: uppercase;
+  border-top: 1px solid rgba(245,242,233,.1);
+  color: rgba(245,242,233,.4);
+  background: #050505;
+  position: relative;
+  z-index: 10;
+}
+
+/* ── Responsive ──────────────────────────────────────────────────────── */
+@media (max-width: 900px) {
+  .gg-nav-centre { gap: 14px; }
+  .gg-nav-centre a { font-size: 10px; }
+  .gg-panel-title { font-size: clamp(48px, 14vw, 100px); }
+  .gg-how-grid { grid-template-columns: 1fr; gap: 28px; }
+  .gg-how-section { padding: 70px 24px 60px; }
+  .gg-cta-section { padding: 0 24px 70px; }
+  .gg-cta-inner { flex-direction: column; align-items: flex-start; padding: 30px; }
+}
+
+@media (max-width: 600px) {
+  .gg-nav { padding: 14px 16px; }
+  .gg-nav-centre { display: none; }
+  .gg-panel-split { grid-template-columns: 1fr; }
+  .gg-split-right { display: none; }
+  .gg-panel-content { padding: 20px; }
+  .gg-panel-title { font-size: clamp(40px, 18vw, 80px); }
+  .gg-panel-cats span { font-size: 10px; }
+  .gg-footer-brand { padding: 10px 16px; font-size: 9px; }
+  .gg-footer { padding: 14px 16px; font-size: 9px; }
+}
