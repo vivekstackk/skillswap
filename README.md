@@ -1,61 +1,125 @@
 # SkillSwap
 
-A modern peer-to-peer platform for discovering, sharing, and learning skills.
+A peer-to-peer skill sharing platform prototype with mock skill data and Firebase integration.
+
+## Preview
+
+SkillSwap is a frontend prototype demonstrating a skill sharing interface. Since there are no suitable screenshots in the repository that represent actual user-generated content (all skills are mock data), here's a live demo section instead.
+
+**Live Demo**: The deployed version is currently not accessible. To run locally, follow the installation instructions below.
+
+**GitHub Repository**: https://github.com/vivekstackk/skillswap
 
 ## Overview
 
-SkillSwap is a peer-to-peer skill sharing platform that enables users to discover new skills, learn from others' expertise, and share their own knowledge. The platform operates on a time-credit system where users earn credits by publishing skills and spend those credits to learn from others, creating a collaborative learning community.
+SkillSwap is a React-based frontend prototype for a peer-to-peer skill sharing platform. The application demonstrates the UI/UX concept of a platform where users can browse skills, view skill details, and navigate through different sections of the app.
 
-Built with React, Vite, Tailwind CSS, and Firebase, SkillSwap provides a seamless experience for knowledge exchange in a community-driven environment.
+**Note**: This prototype uses hardcoded mock skill data and does not persist user data or skills to a real database. The Firebase configuration is present but connected to a placeholder project.
+
+### What SkillSwap Is
+A frontend prototype showcasing the interface for a skill sharing platform built with React, Vite, and Firebase.
+
+### Problem It Addresses
+Provides a demonstration of how a skill sharing platform's user interface could be structured and styled.
+
+### How the Platform Works
+The prototype allows users to:
+- Browse through predefined skill categories
+- View detailed information about each skill (instructor, description, lecture videos)
+- Navigate between different pages (Home, Profile, Browse Skills, etc.)
+- Access mock skill data for demonstration purposes
+
+### Designed For
+Developers and designers interested in seeing a React-based skill sharing interface prototype.
 
 ## Key Features
 
-- **Skill Discovery**: Browse and search through a library of user-created skills across various domains
-- **Interactive Learning**: Video-based lectures with structured curriculum and hands-on practice
-- **Credit System**: Earn time credits for publishing skills, spend credits to unlock and learn from others
-- **Skill Creation**: Create and publish your own skill lessons with multi-lecture support
-- **User Profiles**: Track your learning journey, published skills, and credit balance
-- **Messaging System**: Connect directly with skill creators and learners for questions and collaboration
-- **Responsive Design**: Optimized for both desktop and mobile devices
-- **Secure Authentication**: Firebase-based authentication with Google provider
+Based on actual implementation in the source code:
+
+- **Skill Browsing**: View a grid of skill cards with mock data
+- **Skill Details**: View detailed information about individual skills including lecture videos
+- **Navigation**: Client-side routing between different pages
+- **User Authentication**: Firebase Google authentication integration (UI only)
+- **Responsive Design**: Mobile-responsive layout using Tailwind CSS
+- **Modern UI**: Built with Material-UI components and custom styling
+- **Mock Data**: 25 predefined skills for demonstration purposes
+
+## How It Works
+
+1. **Explore Skills**: Browse the skill grid on the Browse Skills page
+2. **View Skill Details**: Click on any skill to see detailed information and lecture videos
+3. **Navigate**: Use the navigation bar to access different sections (Home, Profile, etc.)
+4. **Authentication**: Click login to see the Firebase Google auth flow (demo mode)
+5. **Responsive Layout**: Resize the browser to see the mobile-friendly interface
 
 ## Technology Stack
 
 ### Frontend
-- **React 19** - Modern JavaScript library for building user interfaces
-- **Vite** - Fast build tool and development server
-- **Tailwind CSS** - Utility-first CSS framework for rapid UI development
-- **React Router DOM** - Declarative routing for React applications
-- **Lucide React** - Consistent, accessible icon set
-- **Material-UI (MUI)** - Comprehensive React component library
+- **React 19** - JavaScript library for building user interfaces
+- **Vite** - Build tool and development server
+- **Tailwind CSS** - Utility-first CSS framework for styling
+- **React Router DOM** - Client-side routing
+- **Lucide React** - Icon set
+- **Material-UI (MUI)** - Component library for UI elements
 
-### Backend & Services
-- **Firebase Authentication** - Secure user authentication and management
-- **Cloud Firestore** - Real-time NoSQL database for skill and user data
-- **Firebase Storage** - Storage for skill lecture videos and media
-- **Firebase Admin** - Server-side SDK for administrative functions (where applicable)
+### Backend / Services
+- **Firebase Authentication** - Auth service integration (demo mode)
+- **Firebase Firestore** - Database service configured (not actively used for persistence)
+- **Firebase Storage** - Storage service configured (not actively used)
 
 ### Development Tools
-- **ESLint** - JavaScript linting utility for code quality
-- **PostCSS & Autoprefixer** - CSS processing for cross-browser compatibility
-- **Vite Plugin React** - Official React plugin for Vite
+- **ESLint** - Code linting
+- **PostCSS & Autoprefixer** - CSS processing
+- **Vite Plugin React** - React integration for Vite
 
-## How It Works
+## Architecture
 
-1. **Explore Skills**: Browse the skill library or search for specific skills you want to learn
-2. **Learn a Skill**: Select a skill, verify you have enough time credits, and unlock the lessons
-3. **Learn & Practice**: Watch video lectures, follow tutorials, and practice the skill
-4. **Share Knowledge**: Create your own skill lessons using the skill creation tool
-5. **Publish & Earn**: Publish your skill to earn time credits that others can use to learn from you
-6. **Connect**: Use the messaging system to ask questions, share feedback, and connect with other learners
+The application follows a standard React single-page application architecture:
+
+```
+React / Vite
+↓
+SkillSwap Frontend
+↓
+Firebase Services (Configured but not actively used for data persistence)
+├── Authentication
+├── Firestore
+└── Storage
+```
+
+## Project Structure
+
+```
+skillswap/
+├── public/                 # Static assets
+│   ├── favicon.png
+│   └── skills/             # Skill demonstration images
+├── src/
+│   ├── assets/             # Additional static assets
+│   ├── components/         # Reusable components (Navbar, BackToHome)
+│   ├── data/               # Mock skills data (skillsData.js)
+│   ├── pages/              # Application pages (Home, Profile, BrowseSkills, etc.)
+│   ├── firebaseClient.js   # Firebase initialization
+│   ├── App.jsx             # Main app component with routing
+│   ├── main.jsx            # Application entry point
+│   ├── index.css           # Global styles
+│   └── hero-split.css      # Component-specific styles
+├── .gitignore              # Git ignore rules
+├── eslint.config.js        # ESLint configuration
+├── index.html              # Main HTML template
+├── package.json            # Project dependencies and scripts
+├── postcss.config.js       # PostCSS configuration
+├── tailwind.config.js      # Tailwind CSS configuration
+└── vite.config.js          # Vite configuration
+```
 
 ## Live Demo
 
-Experience SkillSwap live at: [https://skillswaapp.vercel.app](https://skillswaapp.vercel.app)
+The deployed version is currently not accessible. To experience SkillSwap locally:
 
 ## Installation
 
-To run SkillSwap locally for development or contribution:
+To run SkillSwap locally for development:
 
 1. **Clone the repository:**
    ```bash
@@ -72,98 +136,68 @@ To run SkillSwap locally for development or contribution:
    npm install
    ```
 
-4. **Set up environment variables:**
-   Create a `.env` file in the root directory with your Firebase configuration:
-   ```
-   VITE_API_KEY=your_firebase_api_key
-   VITE_AUTH_DOMAIN=your_firebase_auth_domain
-   VITE_PROJECT_ID=your_firebase_project_id
-   VITE_STORAGE_BUCKET=your_firebase_storage_bucket
-   VITE_MESSAGING_SENDER_ID=your_firebase_messaging_sender_id
-   VITE_APP_ID=your_firebase_app_id
-   ```
-
-5. **Start the development server:**
+4. **Start the development server:**
    ```bash
    npm run dev
    ```
 
-6. **Open your browser:**
+5. **Open your browser:**
    Visit `http://localhost:5173` to view the application
 
 ## Environment Variables
 
-The following environment variables are required for Firebase integration:
+The Firebase configuration is already included in the source code (`src/firebaseClient.js`) for demonstration purposes. In a real production environment, you would need to:
 
-| Variable | Description | Example |
-|----------|-------------|---------|
-| `VITE_API_KEY` | Firebase API key | `AIzaSyABCDEF1234567890` |
-| `VITE_AUTH_DOMAIN` | Firebase authentication domain | `skillswap.firebaseapp.com` |
-| `VITE_PROJECT_ID` | Firebase project ID | `skillswap` |
-| `VITE_STORAGE_BUCKET` | Firebase storage bucket | `skillswap.appspot.com` |
-| `VITE_MESSAGING_SENDER_ID` | Firebase messaging sender ID | `1234567890` |
-| `VITE_APP_ID` | Firebase app ID | `1:1234567890:web:abcdef123456>` |
+1. Create a Firebase project at https://console.firebase.google.com/
+2. Replace the configuration in `src/firebaseClient.js` with your actual Firebase credentials
+3. Never commit actual Firebase credentials to version control
 
-> **Important**: Never commit your actual `.env` file to version control. The `.gitignore` file is configured to exclude `.env` files for security.
+The following Firebase configuration values are required:
+- `apiKey`
+- `authDomain`
+- `projectId`
+- `storageBucket`
+- `messagingSenderId`
+- `appId`
 
-## Project Structure
+> **Important**: The current Firebase configuration in the repository uses a placeholder project and is for demonstration purposes only.
 
-```
-skillswap/
-├── public/                 # Static assets
-├── src/
-│   ├── assets/             # Images, icons, and media files
-│   ├── components/         # Reusable React components
-│   ├── data/               # Skill data and mock data
-│   ├── pages/              # Application pages/routes
-│   ├── firebaseClient.js   # Firebase initialization and configuration
-│   ├── App.jsx             # Main application component
-│   ├── main.jsx            # Application entry point
-│   └── styles/             # CSS and styling files
-├── .vercel/                # Vercel deployment configuration
-├── .gitignore              # Git ignore rules
-├── eslint.config.js        # ESLint configuration
-├── index.html              # Main HTML template
-├── package.json            # Project dependencies and scripts
-├── postcss.config.js       # PostCSS configuration
-├── tailwind.config.js      # Tailwind CSS configuration
-└── vite.config.js          # Vite configuration
-```
+## Roadmap
 
-## Future Improvements
+This is a prototype implementation. Future enhancements that would be needed for a fully functional platform:
 
-These are planned enhancements for future versions of SkillSwap:
+- **Real Database Integration**: Connect to Firebase Firestore to store and retrieve actual skills and user data
+- **User-Generated Content**: Allow users to create and publish their own skills
+- **Persistent Authentication**: Implement proper user session management
+- **Credit System**: Implement the time-credit system mentioned in the original concept
+- **Messaging System**: Implement real-time communication between users
+- **Skill Upload**: Allow users to upload lecture videos and skill materials
+- **Search & Filtering**: Implement advanced search and filtering capabilities
+- **User Profiles**: Implement persistent user profiles with learning history
+- **Responsive Enhancements**: Further optimize mobile experience
 
-- **Skill Categories**: Improved categorization and tagging system for better discovery
-- **Progress Tracking**: Visual progress bars and completion tracking for skills
-- **Skill Ratings & Reviews**: Allow users to rate and review skills they've learned
-- **Live Sessions**: Option to schedule and host live skill-sharing sessions
-- **Mobile App**: Native mobile applications for iOS and Android
-- **Offline Access**: Download skills for offline learning
-- **Gamification**: Badges, achievements, and leaderboards to encourage participation
-- **Advanced Search**: Filters by difficulty level, duration, and skill type
-- **Multi-language Support**: Internationalization for global accessibility
+These features are planned but not currently implemented in this prototype.
 
 ## Contributing
 
-We welcome contributions to SkillSwap! To contribute:
+To contribute to SkillSwap:
 
-1. **Fork the repository** on GitHub
+1. **Fork** the repository on GitHub
 2. **Create a new branch** for your feature or bug fix
 3. **Make your changes** following the existing code style
 4. **Test your changes** thoroughly
-5. **Submit a pull request** with a clear description of your changes
+5. **Open a pull request** with a clear description of your changes
 
-Please ensure your code follows the existing ESLint conventions and includes appropriate tests where applicable.
+Please ensure your code follows the existing ESLint conventions.
 
 ## License
 
-This project is licensed under the ISC license.
+This project is licensed under the ISC license - see the [LICENSE](https://github.com/vivekstackk/skillswap/blob/main/LICENSE) file for details.
 
 ## Author
 
 **Vivek Damar**
 - GitHub: [https://github.com/vivekstackk](https://github.com/vivekstackk)
-- Project: SkillSwap - Peer-to-Peer Skill Sharing Platform
+- Project: SkillSwap - Skill Sharing Platform Prototype
 
-Built with ❤️ for curious learners and passionate teachers everywhere.
+Built as a learning project to demonstrate React/Vite/Firebase integration.
